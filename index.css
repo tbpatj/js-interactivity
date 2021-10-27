@@ -38,10 +38,16 @@ ul {
 li {
     cursor: pointer;
 }
+
+span {
+    color: rgba(1,1,1,1.0);
+    transition: color 1s;
+}
   
 .checked {
     color: gray;
     text-decoration: line-through;
+    transition: color 0s;
 }
   
 .hide {

@@ -3,7 +3,8 @@ let message = document.querySelector("#message");
 
 function deleteMovie(event){
     event.target.parentNode.remove();
-    message.textContent = 'Movie has been eliminated';
+    console.log();
+    message.textContent = `'${event.target.previousSibling.textContent}' has been eliminated from the watchlist`;
     revealMessage();
 }
 
@@ -16,23 +17,23 @@ function crossOffMovie(event){
         let randomReponse = Math.ceil(Math.random() * 5);
         switch (randomReponse){
             case 1:
-                message.textContent = "You watched that??? That like just came out.";
+                message.textContent = `You've watched "${event.target.textContent}"??? That like just came out.`;
                 break;
             case 2:
-                message.textContent = "Welp so much for that movie";
+                message.textContent = `Welp so much for watching "${event.target.textContent}"" with you.`;
                 break;
             case 3:
-                message.textContent = "Sheesh, I see you, throwin round money on all those movie tickets";
+                message.textContent = `Sheesh, I see you, throwin round money on all those movie tickets`;
                 break;
             case 4:
-                message.textContent = "Wow I'm jealous, thats on the top of my watchlist";
+                message.textContent = `Wow I'm jealous, "${event.target.textContent}" is on the top of my watchlist`;
                 break;
             case 5:
-                message.textContent = "Oooo " + event.target.textContent + "! The trailer was amazing! was it any good?";
+                message.textContent = `Oooo "${event.target.textContent}"! The trailer was amazing! was it any good?`;
                 break;
         }
     } else {
-        message.textContent = "unchecked";
+        message.textContent = `You mean to tell me you haven't watched "${event.target.textContent}"`;
     }
     revealMessage();
 }
