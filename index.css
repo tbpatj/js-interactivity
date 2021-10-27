@@ -45,6 +45,8 @@ li {
 }
   
 .hide {
+    color: rgba(1,1,1,0.0);
+    transition: color 1.5s, visibility 1.5s;
     visibility: hidden;
 }
 

@@ -1,13 +1,50 @@
 console.log("Hello World");
+let message = document.querySelector("#message");
 
 function deleteMovie(event){
     event.target.parentNode.remove();
-    
-}
-function crossOffMovie(event){
-    event.target.classList.toggle("checked");
+    message.textContent = 'Movie has been eliminated';
+    revealMessage();
 }
 
+
+
+
+function crossOffMovie(event){
+    event.target.classList.toggle("checked");
+    if(event.target.classList.contains("checked")){
+        let randomReponse = Math.ceil(Math.random() * 5);
+        switch (randomReponse){
+            case 1:
+                message.textContent = "You watched that??? That like just came out.";
+                break;
+            case 2:
+                message.textContent = "Welp so much for that movie";
+                break;
+            case 3:
+                message.textContent = "Sheesh, I see you, throwin round money on all those movie tickets";
+                break;
+            case 4:
+                message.textContent = "Wow I'm jealous, thats on the top of my watchlist";
+                break;
+            case 5:
+                message.textContent = "Oooo " + event.target.textContent + "! The trailer was amazing! was it any good?";
+                break;
+        }
+    } else {
+        message.textContent = "unchecked";
+    }
+    revealMessage();
+}
+
+function revealMessage(){
+    message.classList.remove("hide")
+    console.log("hiding");
+    setTimeout(() => {
+        message.classList.add("hide");
+    },1000)
+}
+                    
 function addMovie(evt){
     //stop the submit from sending us somehwere else
     evt.preventDefault();
@@ -19,10 +56,10 @@ function addMovie(evt){
     movieTitle.textContent = (inputField.value);
     //set the value of inputfield to nothing as to clear it for the next input
     inputField.value = "";
-
+    
     //make sure the span has an event listener so we can cross of if clicked
     movieTitle.addEventListener('click',crossOffMovie);
-
+    
     //make sure we add these elements to the document
     movie.appendChild(movieTitle);
     let ulEl = document.querySelector("ul");
